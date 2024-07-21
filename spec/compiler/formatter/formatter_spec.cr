@@ -2887,6 +2887,24 @@ describe Crystal::Formatter do
       end
     CRYSTAL
 
+  # #14767
+  assert_format <<-CRYSTAL, <<-CRYSTAL
+    macro foo
+
+    end
+
+    if true    #
+      a = "xy" #
+    end
+    CRYSTAL
+    macro foo
+    end
+
+    if true    #
+      a = "xy" #
+    end
+    CRYSTAL
+
   # #10190
   assert_format <<-CRYSTAL
     foo(
